@@ -1,6 +1,6 @@
 package entity;
 
-import Enums.BookingStatus;
+import enums.BookingStatus;
 
 import javax.persistence.*;
 

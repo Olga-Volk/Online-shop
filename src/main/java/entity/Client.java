@@ -1,6 +1,6 @@
 package entity;
 
-import Enums.ClientOrAdmin;
+import enums.ClientOrAdmin;
 
 import javax.persistence.*;
 
