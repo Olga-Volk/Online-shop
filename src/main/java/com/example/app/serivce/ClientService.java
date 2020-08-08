@@ -78,10 +78,11 @@ public class ClientService {
         return response;
     }
 
-//    @GetMapping("/allGmails")
-//    List<Client> findWhereEmailIsGmail(){
+    @GetMapping("/allGmails")
+    List<Client> findWhereEmailIsGmail(){
 //        return clientRepository.findWhereEmailIsGmail();
-//    }
+        return null;
+    }
 
 //    @GetMapping("/addAccornedClient")//лучше через пост, и всю логику - в сервис (гугл PostMapping example)
 //    public String addAccornedClient() {
