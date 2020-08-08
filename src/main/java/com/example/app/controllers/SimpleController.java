@@ -19,10 +19,6 @@ public class SimpleController {
 
     @GetMapping("/")
     public String start() {
-        return "Comands: \"/\" ; \"/allClients\" ; /findClient/{id} ;" +
-                " \"/updateClient/{id}/{email}/{passwordWithNumbersOnly}\" ;" +
-                " \"/createNewClient/{email}/{passwordWithNumbersOnly}\" ;" +
-                " \"/createNewAdmin/{email}/{passwordWithNumbersOnly}\" ;" +
-                " \"/deleteClient/{id}\"";
+        return "Comands: \"/\" ; \"/clients\" ; /findClient/{id}";
     }
 }
