@@ -3,6 +3,7 @@ package com.example.app.entity;
 import com.example.app.enums.ClientOrAdmin;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "client")
@@ -15,7 +16,7 @@ public class Client {
     private String email;
 
     @Column (name = "hash_code")
-    private String hashCode;
+    private int hashCode;
 
     @Enumerated (EnumType.ORDINAL)// сменить на стринг
     @Column (name = "access_level")
@@ -37,11 +38,11 @@ public class Client {
         this.email = email;
     }
 
-    public String getHashCode() {
+    public int getHashCode() {
         return hashCode;
     }
 
-    public void setHashCode(String hashCode) {
+    public void setHashCode(int hashCode) {
         this.hashCode = hashCode;
     }
 
