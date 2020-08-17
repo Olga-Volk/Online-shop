@@ -4,9 +4,7 @@ import javax.validation.Valid;
 
 import com.example.app.ResourceNotFoundException;
 import com.example.app.entity.Client;
-import com.example.app.enums.ClientOrAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.app.repository.ClientRepository;
@@ -27,35 +25,21 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-//    public List<Client> findWhereEmailIsGmail() {
-//        return clientRepository.findAll();
-//    }
-
     public List<Client> findAll() {
         return clientRepository.findAll();
     }
 
-    @GetMapping("/clients")
-    public String allClients() {
-        return String.valueOf(findAll());
-    }
-
-    @GetMapping("/findClient/{id}")
-    public ResponseEntity<Client> getClientById(
-            @PathVariable(value = "id") Long clientID) throws ResourceNotFoundException {
+    public ResponseEntity<Client> clientById(Long clientID) throws ResourceNotFoundException {
         Client client = clientRepository.findById(clientID)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found on :: " + clientID));
         return ResponseEntity.ok().body(client);
     }
 
-    @PostMapping("/clients")
-    public Client createClient(@Valid @RequestBody Client client){
+    public Client saveClient(Client client){
         return clientRepository.save(client);
     }
 
-    @PutMapping("/updateClient/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable(value = "id") Long clientID,
-                                               @Valid @RequestBody Client clientDetails) throws ResourceNotFoundException {
+    public ResponseEntity<Client> update(Long clientID, Client clientDetails) throws ResourceNotFoundException {
         Client client = clientRepository.findById(clientID)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found on :: " + clientID));
 
@@ -66,9 +50,7 @@ public class ClientService {
         return ResponseEntity.ok(updatedClient);
     }
 
-    @DeleteMapping("/deleteClient/{id}")
-    public Map<String, Boolean> deleteClient(
-            @PathVariable (value = "id") Long clientID) throws Exception{
+    public Map<String, Boolean> delete(Long clientID) throws Exception{
         Client client = clientRepository.findById(clientID)
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found on :: " + clientID));
 
@@ -78,8 +60,7 @@ public class ClientService {
         return response;
     }
 
-    @GetMapping("/allGmails")
-    List<Client> findWhereEmailIsGmail(){
+    public List<Client> whereEmailIsGmail(){
 //        return clientRepository.findWhereEmailIsGmail();
         return null;
     }
