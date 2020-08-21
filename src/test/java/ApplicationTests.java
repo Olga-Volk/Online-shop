@@ -11,8 +11,6 @@ import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -20,6 +18,7 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 public class ApplicationTests {
+
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -46,11 +45,11 @@ public class ApplicationTests {
     }
 
     @Test
-    public void testShowGmails(){
+    public void testShowGmail(){
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/allGmails",
+        ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/allGmail",
                 HttpMethod.GET, entity, String.class);
 
         assertNotNull(response.getBody());

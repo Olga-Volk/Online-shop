@@ -1,20 +1,18 @@
 package com.example.app.serivce;
-
-import javax.validation.Valid;
-
 import com.example.app.ResourceNotFoundException;
 import com.example.app.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.example.app.repository.ClientRepository;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+//@RestController
 @Service
 public class ClientService {
 
@@ -25,6 +23,10 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
+//    @GetMapping("/clients")
+//    public String findAll() {
+//        return String.valueOf(clientRepository.findAll());
+//    }
     public List<Client> findAll() {
         return clientRepository.findAll();
     }
